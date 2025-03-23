@@ -67,7 +67,11 @@ La scena deve includere i seguenti elementi:
 Organizza la cartella del tuo progetto per mantenere **chiarezza e facilità di accesso**.  
 Segui questa struttura:
 
-Progetto/ ├── index.html ├── assets/ │ ├── textures/ │ └── GLTF/ │ └── (modello 3D scelto in formato GLB/GLTF)
+Progetto/ ├── index.html 
+          ├── assets/ 
+           │  ├── textures/
+           │  └── GLTF/ 
+           │    └── (modello 3D scelto in formato GLB/GLTF)
 
 #### Denominazione dei file:
 Utilizza **nomi chiari e descrittivi**, senza spazi, per i tuoi file e cartelle.  
