@@ -5,9 +5,7 @@
         <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
         <!-- Adds physics to the project -->
         <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
-        <!-- Inclusione del componente teleport-controls per Meta Quest -->
-        <script src="https://cdn.jsdelivr.net/gh/oscarmarinmiro/aframe-teleport-controls/dist/aframe-teleport-controls.min.js"></script>
-        <script src="scripts/avatar.js"></script>
+
     </head>
     <body>
         <a-scene physics="gravity: -9.8">
@@ -49,25 +47,18 @@
     
                 </a-camera>
 
-                <!-- User avatar: sostituire l'URL con quello reale fornito da readyplayer.me -->
-                <a-entity 
-                    id="avatar"
-                    gltf-model="https://models.readyplayer.me/67e022696d59ef35bb68bc0e.glb"
-                    position="0 -1.6 0"
-                    scale="1 1 1">
-                </a-entity>
                 <!-- Left controller with teleport -->
                 <a-entity 
                     hand-controls="hand: left" 
-                    teleport-controls="button: trigger; collisionEntities: #ground">
+                    teleport-controls="button: trigger; collisionEntities: #floor">
                 </a-entity>
                 <!-- Right controller with teleport -->
                 <a-entity 
                     hand-controls="hand: right" 
-                    teleport-controls="button: trigger; collisionEntities: #ground">
+                    teleport-controls="button: trigger; collisionEntities: #floor">
                 </a-entity>
-            
-
+                
+                <!-- Add physics to the body -->
                 <a-entity movement-controls kinematic-body></a-entity>
             </a-entity>
 
@@ -75,7 +66,7 @@
             <a-sky src="#panorama" position="0 -50 0"></a-sky>
 
             <!-- Textured plane parallel to ground -->
-            <a-plane src="#ground" height="100" width="100" rotation="-90 0 0" side = "double"></a-plane>
+            <a-plane id = "floor" src="#ground" height="100" width="100" rotation="-90 0 0" side = "double"></a-plane>
 
             <!-- Wood sign -->
             <a-entity id="wood-sign" position="-2 0 5">
