@@ -8,6 +8,8 @@
         <!-- Inclusione del componente teleport-controls per Meta Quest -->
         <script src="https://cdn.jsdelivr.net/gh/oscarmarinmiro/aframe-teleport-controls/dist/aframe-teleport-controls.min.js"></script>
 
+        
+
     </head>
     <body>
         <a-scene physics="gravity: -9.8">
@@ -19,9 +21,8 @@
               <audio id="background-noises" src="assets/sounds/Park ambience sound  (Royalty Free).mp3"></audio>
               <a-asset-item id="stonehenge" src="assets/GLTF/stonehenge_decimated.glb"></a-asset-item>
             </a-assets>
-            
-            <!-- Placing the starting camera with a physical body -->
-            <a-entity id="rig" position="-5 0 8" rotation="0 70 0" avatar-follower>
+            <!-- Rig per la fotocamera, i controller e l'avatar -->
+            <a-entity id="rig" position="-5 1.6 8" avatar-follower>
                 <a-camera camera="active: true" camera look-controls wasd-controls>
                     <a-text id="welcome-text"
                             value= "Welcome to Stonehenge" 
@@ -48,13 +49,19 @@
                     <a-sound id="background-sound" src="#background-noises" autoplay="true" loop="true" volume="0.1"></a-sound>
     
                 </a-camera>
-
-                <!-- Left controller with teleport -->
+                <!-- Avatar dell'utente: sostituire l'URL con quello reale fornito da readyplayer.me -->
+                <a-entity 
+                    id="avatar"
+                    gltf-model="https://models.readyplayer.me/11111111111111.glb"
+                    position="0 -1.6 0"
+                    scale="1 1 1">
+                </a-entity>
+                <!-- Controller sinistro con teleport -->
                 <a-entity 
                     hand-controls="hand: left" 
                     teleport-controls="button: trigger; collisionEntities: #floor">
                 </a-entity>
-                <!-- Right controller with teleport -->
+                <!-- Controller destro con teleport -->
                 <a-entity 
                     hand-controls="hand: right" 
                     teleport-controls="button: trigger; collisionEntities: #floor">
@@ -62,7 +69,9 @@
                 
                 <!-- Add physics to the body -->
                 <a-entity movement-controls kinematic-body></a-entity>
+
             </a-entity>
+            
 
             <!-- Using the asset management system -->
             <a-sky src="#panorama" position="0 -50 0"></a-sky>
