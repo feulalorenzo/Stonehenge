@@ -22,13 +22,12 @@ To enter the virtual world, simply open this link in your **Meta Quest** browser
 ## 🎯 Purpose
 This project was created as a **learning exercise** in developing **VR applications with A-Frame**. The main objectives were:
 - Understanding **basic scene creation** in A-Frame.
-- Optimizing **3D assets for web-based VR**.
 - Hosting and deploying a VR project using **GitHub Pages**.
 
 ## 📌 Future Improvements
 - Adding **interactivity** (e.g., movement, object inspection).
 - Enhancing **textures and lighting** for better realism.
-- Implementing **audio** for an immersive experience.
+- Implementing **audio configuration** for an immersive experience.
 
 ---
 Enjoy exploring **Stonehenge** in VR! 🏛️✨
