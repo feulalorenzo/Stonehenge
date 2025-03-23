@@ -18,8 +18,8 @@
             </a-assets>
             
             <!-- Placing the starting camera with a physical body -->
-            <a-entity position="0 0 45">
-                <a-camera camera="active: true" camera look-controls wasd-controls rotation="0 0 0">
+            <a-entity position="0 0 6" rotation="0 90 0">
+                <a-camera camera="active: true" camera look-controls wasd-controls>
                     <a-text id="welcome-text"
                             value= "Welcome to Stonehenge" 
                             position="0 1 -1.5"
@@ -55,7 +55,7 @@
             <a-plane src="#ground" height="100" width="100" rotation="-90 0 0" side = "double"></a-plane>
 
             <!-- Wood sign -->
-            <a-entity id="wood-sign" position="-2 0 40">
+            <a-entity id="wood-sign" position="-2 0 5">
                 <a-cylinder src = "#wood" height="1" radius="0.05" position="0 0.5 0"></a-cylinder>
                 <a-box src="#wood" height="0.5" width="1" depth="0.1" rotation="0 30 0" position="0 1.25 0" side="double">
                     <a-text id="sign-text"
@@ -80,7 +80,7 @@
             </a-entity>
 
             <!-- Box with some history -->
-            <a-box src="#wood" height="5" width="4" depth="0.1" rotation="0 180 0" position="0 2.5 50" side="double">
+            <a-box src="#wood" height="5" width="4" depth="0.1" rotation="0 153 0" position="-8 2.5 13" side="double">
                 <a-text id="history"
                     value="Stonehenge is an ancient
                             Neolithic site in England,
