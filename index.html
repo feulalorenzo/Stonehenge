@@ -5,6 +5,9 @@
         <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
         <!-- Adds physics to the project -->
         <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+        <!-- Inclusione del componente teleport-controls per Meta Quest -->
+        <script src="https://cdn.jsdelivr.net/gh/oscarmarinmiro/aframe-teleport-controls/dist/aframe-teleport-controls.min.js"></script>
+        <script src="scripts/avatar.js"></script>
     </head>
     <body>
         <a-scene physics="gravity: -9.8">
@@ -18,7 +21,7 @@
             </a-assets>
             
             <!-- Placing the starting camera with a physical body -->
-            <a-entity id="rig" position="0 0 6" rotation="0 90 0">
+            <a-entity id="rig" position="0 0 6" rotation="0 90 0" avatar-follower>
                 <a-camera camera="active: true" camera look-controls wasd-controls>
                     <a-text id="welcome-text"
                             value= "Welcome to Stonehenge" 
@@ -46,24 +49,24 @@
     
                 </a-camera>
 
-                <!-- Controller Meta Quest -->
-                 
-                <!-- Left Hand -->
-                <a-entity id="leftHand"
-                        oculus-touch-controls="hand: left"
-                        laser-controls="hand: right"
-                        teleport-controls="cameraRig: #rig; collisionEntities: #ground; button: pointup; type: blink; curveShootingSpeed: 0; hitCylinderColor: blue"
-                        raycaster="objects: #ground; showLine: true"
-                        line="color: red; opacity: 0.8">
+                <!-- User avatar: sostituire l'URL con quello reale fornito da readyplayer.me -->
+                <a-entity 
+                    id="avatar"
+                    gltf-model="https://models.readyplayer.me/67e022696d59ef35bb68bc0e.glb"
+                    position="0 -1.6 0"
+                    scale="1 1 1">
                 </a-entity>
-                <!-- Right Hand -->
-                <a-entity id="rightHand"
-                        oculus-touch-controls="hand: right"
-                        laser-controls="hand: right"
-                        teleport-controls="cameraRig: #rig; collisionEntities: #ground; pointup: trigger; type: blink; curveShootingSpeed: 0; hitCylinderColor: blue"
-                        raycaster="objects: #ground; showLine: true"
-                        line="color: blue; opacity: 0.8">
+                <!-- Left controller with teleport -->
+                <a-entity 
+                    hand-controls="hand: left" 
+                    teleport-controls="button: trigger; collisionEntities: #ground">
                 </a-entity>
+                <!-- Right controller with teleport -->
+                <a-entity 
+                    hand-controls="hand: right" 
+                    teleport-controls="button: trigger; collisionEntities: #ground">
+                </a-entity>
+            
 
                 <a-entity movement-controls kinematic-body></a-entity>
             </a-entity>
@@ -129,7 +132,7 @@
             <a-entity gltf-model="#stonehenge" position="0 -1 0"></a-entity>
 
         </a-scene>       
-        <script src="script.js"></script>
+        <script src="scripts/fade_text.js"></script>
     </body>
 </html>
 
