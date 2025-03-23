@@ -14,7 +14,7 @@
               <img id="wood" src="textures/Wood060_1K-PNG_Color.png">
               <img id="hedge" src="textures/green-grass-mat-background.jpg">
               <audio id="background-noises" src="assets/sounds/Park ambience sound  (Royalty Free).mp3"></audio>
-              <a-asset-item id="stonehenge" src="GLTF/stonehenge.glb"></a-asset-item>
+              <a-asset-item id="stonehenge" src="GLTF/stonehenge_decimated.glb"></a-asset-item>
             </a-assets>
             
             <!-- Placing the starting camera with a physical body -->
@@ -48,10 +48,9 @@
                 <a-entity movement-controls kinematic-body></a-entity>
             </a-entity>
 
-            
-
             <!-- Using the asset management system -->
-            <a-sky src="#panorama"></a-sky>
+            <a-sky src="#panorama" position="0 -50 0"></a-sky>
+
             <!-- Textured plane parallel to ground -->
             <a-plane src="#ground" height="100" width="100" rotation="-90 0 0" side = "double"></a-plane>
 
@@ -60,7 +59,9 @@
                 <a-cylinder src = "#wood" height="1" radius="0.05" position="0 0.5 0"></a-cylinder>
                 <a-box src="#wood" height="0.5" width="1" depth="0.1" rotation="0 30 0" position="0 1.25 0" side="double">
                     <a-text id="sign-text"
-                        value="This is a simple\nrepresentation of\nstonehenge"
+                        value="This is a simple
+                                representation of
+                                Stonehenge"
                         position="0 0 0.05"
                         font="kelsonsans"
                         align="center" 
@@ -79,7 +80,7 @@
             </a-entity>
 
             <!-- Box with some history -->
-            <a-box src="#wood" height="4" width="4" depth="0.1" rotation="0 180 0" position="0 2 50" side="double">
+            <a-box src="#wood" height="5" width="4" depth="0.1" rotation="0 180 0" position="0 2.5 50" side="double">
                 <a-text id="history"
                     value="Stonehenge is an ancient
                             Neolithic site in England,
@@ -94,7 +95,7 @@
                             
                             Sources: English Heritage
                             Model by: george172
-                            Panorama by: frimufilms"
+                            Panorama by: lachetas"
                     position="0 0 0.05"
                     font="kelsonsans"
                     align="center" 
@@ -104,8 +105,8 @@
                 </a-text>
             </a-box>
             
-            <!-- Stonhenge asset -->
-            <a-entity gltf-model="#stonehenge" position="0 -15.1 0"></a-entity>
+            <!-- Stonhenge model -->
+            <a-entity gltf-model="#stonehenge" position="0 -1 0"></a-entity>
 
             <!-- Controller Meta Quest -->
             <a-entity laser-controls="hand: left"></a-entity>
