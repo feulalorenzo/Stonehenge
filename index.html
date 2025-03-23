@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stonehenge Scene</title>
+        <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+        <!-- Adds physics to the project -->
+        <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+    </head>
+    <body>
+        <a-scene physics="gravity: -9.8">
+            <a-assets>
+              <img id="panorama" src="assets/background/panorama.jpg">
+              <img id="ground" src="textures/ground.jpg">
+              <img id="wood" src="textures/Wood060_1K-PNG_Color.png">
+              <img id="hedge" src="textures/green-grass-mat-background.jpg">
+              <audio id="background-noises" src="assets/sounds/Park ambience sound  (Royalty Free).mp3"></audio>
+              <a-asset-item id="stonehenge" src="GLTF/stonehenge.glb"></a-asset-item>
+            </a-assets>
+            
+            <!-- Placing the starting camera with a physical body -->
+            <a-entity position="0 0 45">
+                <a-camera camera="active: true" camera look-controls wasd-controls rotation="0 0 0">
+                    <a-text id="welcome-text"
+                            value= "Welcome to Stonehenge" 
+                            position="0 1 -1.5"
+                            align="center"
+                            font="kelsonsans"
+                            color="#171312"
+                            letter-spacing="-1"
+                            opacity="1"
+                            animation="property: opacity; to: 0; dur: 2000; startEvents: fadeOut">
+                    </a-text>
+                    <a-text id="credits-text"
+                            value= "Made by Feula Lorenzo" 
+                            position="0 1 -1.5"
+                            align="center"
+                            font="kelsonsans"
+                            color="#171312"
+                            letter-spacing="-1"
+                            opacity="0"
+                            animation="property: opacity; to: 1; dur: 2000; startEvents: fadeIn">
+                            
+                    </a-text>
+                    <!-- Background audio -->
+                    <a-sound id="background-sound" src="#background-noises" autoplay="true" loop="true" volume="0.1"></a-sound>
+    
+                </a-camera>
+                <a-entity movement-controls kinematic-body></a-entity>
+            </a-entity>
+
+            
+
+            <!-- Using the asset management system -->
+            <a-sky src="#panorama"></a-sky>
+            <!-- Textured plane parallel to ground -->
+            <a-plane src="#ground" height="100" width="100" rotation="-90 0 0" side = "double"></a-plane>
+
+            <!-- Wood sign -->
+            <a-entity id="wood-sign" position="-2 0 40">
+                <a-cylinder src = "#wood" height="1" radius="0.05" position="0 0.5 0"></a-cylinder>
+                <a-box src="#wood" height="0.5" width="1" depth="0.1" rotation="0 30 0" position="0 1.25 0" side="double">
+                    <a-text id="sign-text"
+                        value="This is a simple\nrepresentation of\nstonehenge"
+                        position="0 0 0.05"
+                        font="kelsonsans"
+                        align="center" 
+                        color="white" 
+                        scale="0.5 0.5 0.5">
+                    </a-text>
+                </a-box>
+            </a-entity>
+
+            <!-- World limiters -->
+            <a-entity id="hedge-limiter" static-body>
+                <a-box src="#hedge" height="1" width="100" depth="0.05" rotation="0 0 0" position="0 0.5 50" side="double" static-body></a-box>
+                <a-box src="#hedge" height="1" width="100" depth="0.05" rotation="0 0 0" position="0 0.5 -50" side="double" static-body></a-box>
+                <a-box src="#hedge" height="1" width="100" depth="0.05" rotation="0 90 0" position="50 0.5 0" side="double" static-body></a-box>
+                <a-box src="#hedge" height="1" width="100" depth="0.05" rotation="0 90 0" position="-50 0.5 0" side="double" static-body></a-box>
+            </a-entity>
+
+            <!-- Box with some history -->
+            <a-box src="#wood" height="4" width="4" depth="0.1" rotation="0 180 0" position="0 2 50" side="double">
+                <a-text id="history"
+                    value="Stonehenge is an ancient
+                            Neolithic site in England,
+                            built between 3000 and 2000 BC.
+                            It consists of massive stones
+                            arranged in a circular formation.
+                            Its exact purpose remains unknown,
+                            but it is believed to have been a
+                            ceremonial or astronomical site.
+                            Today, it is one of the world's
+                            most famous prehistoric\nmonuments.
+                            
+                            Sources: English Heritage
+                            Model by: george172
+                            Panorama by: frimufilms"
+                    position="0 0 0.05"
+                    font="kelsonsans"
+                    align="center" 
+                    color="white" 
+                    scale="1 1 1"
+                    wrap-count="40">
+                </a-text>
+            </a-box>
+            
+            <!-- Stonhenge asset -->
+            <a-entity gltf-model="#stonehenge" position="0 -15.1 0"></a-entity>
+
+            <!-- Controller Meta Quest -->
+            <a-entity laser-controls="hand: left"></a-entity>
+            <a-entity laser-controls="hand: right"></a-entity>
+
+        </a-scene>       
+        <script src="script.js"></script>
+    </body>
+</html>
+
