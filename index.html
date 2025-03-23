@@ -18,7 +18,7 @@
             </a-assets>
             
             <!-- Placing the starting camera with a physical body -->
-            <a-entity position="0 0 6" rotation="0 90 0">
+            <a-entity id="rig" position="0 0 6" rotation="0 90 0">
                 <a-camera camera="active: true" camera look-controls wasd-controls>
                     <a-text id="welcome-text"
                             value= "Welcome to Stonehenge" 
@@ -45,6 +45,9 @@
                     <a-sound id="background-sound" src="#background-noises" autoplay="true" loop="true" volume="0.1"></a-sound>
     
                 </a-camera>
+                <!-- Controller Meta Quest -->
+                <a-entity laser-controls="hand: left"></a-entity>
+                <a-entity laser-controls="hand: right"></a-entity>
                 <a-entity movement-controls kinematic-body></a-entity>
             </a-entity>
 
@@ -107,10 +110,6 @@
             
             <!-- Stonhenge model -->
             <a-entity gltf-model="#stonehenge" position="0 -1 0"></a-entity>
-
-            <!-- Controller Meta Quest -->
-            <a-entity laser-controls="hand: left"></a-entity>
-            <a-entity laser-controls="hand: right"></a-entity>
 
         </a-scene>       
         <script src="script.js"></script>
