@@ -45,9 +45,26 @@
                     <a-sound id="background-sound" src="#background-noises" autoplay="true" loop="true" volume="0.1"></a-sound>
     
                 </a-camera>
+
                 <!-- Controller Meta Quest -->
-                <a-entity laser-controls="hand: left"></a-entity>
-                <a-entity laser-controls="hand: right"></a-entity>
+                 
+                <!-- Left Hand -->
+                <a-entity id="leftHand"
+                        oculus-touch-controls="hand: left"
+                        laser-controls="hand: right"
+                        teleport-controls="cameraRig: #rig; collisionEntities: #ground; button: pointup; type: blink; curveShootingSpeed: 0; hitCylinderColor: blue"
+                        raycaster="objects: #ground; showLine: true"
+                        line="color: red; opacity: 0.8">
+                </a-entity>
+                <!-- Right Hand -->
+                <a-entity id="rightHand"
+                        oculus-touch-controls="hand: right"
+                        laser-controls="hand: right"
+                        teleport-controls="cameraRig: #rig; collisionEntities: #ground; pointup: trigger; type: blink; curveShootingSpeed: 0; hitCylinderColor: blue"
+                        raycaster="objects: #ground; showLine: true"
+                        line="color: blue; opacity: 0.8">
+                </a-entity>
+
                 <a-entity movement-controls kinematic-body></a-entity>
             </a-entity>
 
