@@ -20,6 +20,7 @@
               <img id="hedge" src="assets/textures/green-grass-mat-background.jpg">
               <audio id="background-noises" src="assets/sounds/Park ambience sound  (Royalty Free).mp3"></audio>
               <a-asset-item id="stonehenge" src="assets/GLTF/stonehenge_decimated.glb"></a-asset-item>
+              <a-asset-item id="avatar" src="assets/GLTF/avatar.glb"></a-asset-item>
             </a-assets>
             <!-- Rig per la fotocamera, i controller e l'avatar -->
             <a-entity id="rig" position="-5 1.6 8" avatar-follower>
@@ -49,19 +50,18 @@
                     <a-sound id="background-sound" src="#background-noises" autoplay="true" loop="true" volume="0.1"></a-sound>
     
                 </a-camera>
-                <!-- Avatar dell'utente: sostituire l'URL con quello reale fornito da readyplayer.me -->
+                <!-- User avatar -->
                 <a-entity 
-                    id="avatar"
-                    gltf-model="https://models.readyplayer.me/11111111111111.glb"
+                    gltf-model="#avatar"
                     position="0 -1.6 0"
                     scale="1 1 1">
                 </a-entity>
-                <!-- Controller sinistro con teleport -->
+                <!-- Left controller with teleport -->
                 <a-entity 
                     hand-controls="hand: left" 
                     teleport-controls="button: trigger; collisionEntities: #floor">
                 </a-entity>
-                <!-- Controller destro con teleport -->
+                <!-- Right controller with teleport -->
                 <a-entity 
                     hand-controls="hand: right" 
                     teleport-controls="button: trigger; collisionEntities: #floor">
