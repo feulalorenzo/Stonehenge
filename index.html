@@ -6,16 +6,21 @@
         <!-- Inclusione del componente teleport-controls per Meta Quest -->
         <script src="https://cdn.jsdelivr.net/gh/oscarmarinmiro/aframe-teleport-controls/dist/aframe-teleport-controls.min.js"></script>
         <script src="scripts/fade_text.js"></script>
+        <script src="scripts/audio.js"></script>
+        <script src="scripts/animated_merchant.js"></script>
     </head>
     <body>
         <a-scene>
+            <!-- Assets Management System -->
             <a-assets>
               <img id="panorama" src="assets/background/panorama.jpg">
               <img id="ground" src="assets/textures/ground.jpg">
               <img id="wood" src="assets/textures/Wood060_1K-PNG_Color.png">
               <img id="hedge" src="assets/textures/green-grass-mat-background.jpg">
-              <audio id="background-noises" src="assets/sounds/Stonehenge narration.mp3"></audio>
+              <audio id="narration" src="assets/sounds/Stonehenge narration.mp3"></audio>
               <a-asset-item id="stonehenge" src="assets/GLTF/stonehenge_decimated.glb"></a-asset-item>
+              <a-asset-item id="merchant" src="assets/GLTF/merchant.glb"></a-asset-item>
+
             </a-assets>
             
             <!-- Placing the starting camera -->
@@ -42,9 +47,7 @@
                             animation="property: opacity; to: 1; dur: 2000; startEvents: fadeIn">
                             
                     </a-text>
-                    <!-- Background audio -->
-                    <a-sound id="background-sound" src="#background-noises" autoplay="true" loop="true" volume="0.1"></a-sound>
-    
+                    <a-cursor></a-cursor>
                 </a-camera>
 
                 <!-- Left controller with teleport -->
@@ -67,13 +70,13 @@
             <a-plane id = "floor" src="#ground" height="100" width="100" rotation="-90 0 0" side = "double" shadow="receive: true; cast: false"></a-plane>
 
             <!-- Wood sign -->
-            <a-entity id="wood-sign" position="-5 0 5" shadow="cast: true">
+            <a-entity id="wood-sign" position="-5 0 5" shadow="cast: true" sound="src: #narration" scale="0.8 0.8 0.8">
                 <a-cylinder src = "#wood" height="1" radius="0.05" position="0 0.5 0"></a-cylinder>
                 <a-box src="#wood" height="0.5" width="1" depth="0.1" rotation="0 350 0" position="0 1.25 0" side="double">
                     <a-text id="sign-text"
-                        value="This is a simple
-                                representation of
-                                Stonehenge"
+                        value="- Storyteller -
+                                Green: Play
+                                Red: Stop"
                         position="0 0 0.05"
                         font="kelsonsans"
                         align="center" 
@@ -81,6 +84,8 @@
                         scale="0.5 0.5 0.5">
                     </a-text>
                 </a-box>
+                <a-sphere scale="0.2 0.2 0.2" color="red" position="-1 1 0" stop></a-sphere>
+                <a-sphere scale="0.2 0.2 0.2" color="green" position="1 1 0" play></a-sphere>
             </a-entity>
 
             <!-- World limiters -->
@@ -92,7 +97,7 @@
             </a-entity>
 
             <!-- Box with some history -->
-            <a-box src="#wood" height="5" width="4" depth="0.5" rotation="0 153 0" position="-7.5 2.5 13" side="double" shadow="cast: true">
+            <a-box src="#wood" height="5" width="4" depth="0.5" rotation="0 160 0" position="-7.5 2.5 13" side="double" shadow="cast: true">
                 <a-text id="history"
                     value="Stonehenge is an ancient
                             Neolithic site in England,
@@ -106,8 +111,9 @@
                             most famous prehistoric\nmonuments.
                             
                             Sources: English Heritage
-                            Model by: george172
-                            Panorama by: lachetas"
+                            Stonehenge by: george172
+                            Panorama by: lachetas
+                            Merchant by: jbnotjeebe"
                     position="0 0 0.28"
                     font="kelsonsans"
                     align="center" 
@@ -122,6 +128,15 @@
             <a-entity gltf-model="#stonehenge" position="0 -1 0"
                     shadow="cast: true; receive: true"
             ></a-entity>
+
+            <!-- Merchant model -->
+            <a-entity id="animated_merchant"
+                    gltf-model="#merchant" 
+                    position="-5 0 4"
+                    shadow="cast: true; receive: true"
+                    scale="0.045 0.045 0.045"
+                    animation-mixer>
+            </a-entity>
 
             <!-- Ambient Light -->
             <a-entity light="type: ambient; color: #BBB; intensity: 0.1; castShadow: false" position="-5 5 8 "></a-entity>
@@ -140,7 +155,7 @@
                             distance: 10;
                             castShadow: true;
                             color: #BBB"
-                    position="-1.5 4.1 8">
+                    position="-5 4.1 7.2">
             </a-entity>
         </a-scene>
     </body>
