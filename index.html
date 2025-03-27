@@ -18,7 +18,7 @@
               <a-asset-item id="stonehenge" src="assets/GLTF/stonehenge_decimated.glb"></a-asset-item>
             </a-assets>
             
-            <!-- Placing the starting camera with a physical body -->
+            <!-- Placing the starting camera -->
             <a-entity id="rig" position="-5 0 8" rotation="0 70 0">
                 <a-camera camera="active: true" camera look-controls wasd-controls>
                     <a-text id="welcome-text"
@@ -26,7 +26,7 @@
                             position="0 0 -1.5"
                             align="center"
                             font="kelsonsans"
-                            color="#171312"
+                            color="white"
                             letter-spacing="-1"
                             opacity="1"
                             animation="property: opacity; to: 0; dur: 2000; startEvents: fadeOut">
@@ -36,7 +36,7 @@
                             position="0 0 -1.5"
                             align="center"
                             font="kelsonsans"
-                            color="#171312"
+                            color="white"
                             letter-spacing="-1"
                             opacity="0"
                             animation="property: opacity; to: 1; dur: 2000; startEvents: fadeIn">
@@ -64,10 +64,10 @@
             <a-sky src="#panorama" position="0 -50 0"></a-sky>
 
             <!-- Textured plane parallel to ground -->
-            <a-plane id = "floor" src="#ground" height="100" width="100" rotation="-90 0 0" side = "double"></a-plane>
+            <a-plane id = "floor" src="#ground" height="100" width="100" rotation="-90 0 0" side = "double" shadow="receive: true; cast: false"></a-plane>
 
             <!-- Wood sign -->
-            <a-entity id="wood-sign" position="-5 0 5">
+            <a-entity id="wood-sign" position="-5 0 5" shadow="cast: true">
                 <a-cylinder src = "#wood" height="1" radius="0.05" position="0 0.5 0"></a-cylinder>
                 <a-box src="#wood" height="0.5" width="1" depth="0.1" rotation="0 350 0" position="0 1.25 0" side="double">
                     <a-text id="sign-text"
@@ -84,15 +84,15 @@
             </a-entity>
 
             <!-- World limiters -->
-            <a-entity id="hedge-limiter" static-body>
-                <a-box src="#hedge" height="1" width="100" depth="0.05" rotation="0 0 0" position="0 0.5 50" side="double" static-body></a-box>
-                <a-box src="#hedge" height="1" width="100" depth="0.05" rotation="0 0 0" position="0 0.5 -50" side="double" static-body></a-box>
-                <a-box src="#hedge" height="1" width="100" depth="0.05" rotation="0 90 0" position="50 0.5 0" side="double" static-body></a-box>
-                <a-box src="#hedge" height="1" width="100" depth="0.05" rotation="0 90 0" position="-50 0.5 0" side="double" static-body></a-box>
+            <a-entity id="hedge-limiter">
+                <a-box src="#hedge" height="1" width="100" depth="0.05" rotation="0 0 0" position="0 0.5 50" side="double" shadow="cast: true"></a-box>
+                <a-box src="#hedge" height="1" width="100" depth="0.05" rotation="0 0 0" position="0 0.5 -50" side="double" shadow="cast: true"></a-box>
+                <a-box src="#hedge" height="1" width="100" depth="0.05" rotation="0 90 0" position="50 0.5 0" side="double" shadow="cast: true"></a-box>
+                <a-box src="#hedge" height="1" width="100" depth="0.05" rotation="0 90 0" position="-50 0.5 0" side="double" shadow="cast: true"></a-box>
             </a-entity>
 
             <!-- Box with some history -->
-            <a-box src="#wood" height="5" width="4" depth="0.5" rotation="0 153 0" position="-7.5 2.5 13" side="double">
+            <a-box src="#wood" height="5" width="4" depth="0.5" rotation="0 153 0" position="-7.5 2.5 13" side="double" shadow="cast: true">
                 <a-text id="history"
                     value="Stonehenge is an ancient
                             Neolithic site in England,
@@ -113,13 +113,35 @@
                     align="center" 
                     color="white" 
                     scale="1 1 1"
-                    wrap-count="40">
+                    wrap-count="40"
+                    >
                 </a-text>
             </a-box>
             
             <!-- Stonhenge model -->
-            <a-entity gltf-model="#stonehenge" position="0 -1 0"></a-entity>
+            <a-entity gltf-model="#stonehenge" position="0 -1 0"
+                    shadow="cast: true; receive: true"
+            ></a-entity>
 
+            <!-- Ambient Light -->
+            <a-entity light="type: ambient; color: #BBB; intensity: 0.1; castShadow: false" position="-5 5 8 "></a-entity>
+
+            <!-- Directional Light -->
+            <a-entity light="type: directional; 
+                            color: #BBB;
+                            intensity: 0.1;
+                            castShadow: false"                            " 
+                    position="-0.5 1 1">
+            </a-entity>
+            
+            <!-- Custom Point Light -->
+            <a-entity light="type: point;
+                            intensity: 1;
+                            distance: 10;
+                            castShadow: true;
+                            color: #BBB"
+                    position="-5 3 8">
+            </a-entity>
         </a-scene>
     </body>
 </html>
