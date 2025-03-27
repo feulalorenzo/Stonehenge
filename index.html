@@ -8,6 +8,8 @@
         <!-- Inclusione del componente teleport-controls per Meta Quest -->
         <script src="https://cdn.jsdelivr.net/gh/oscarmarinmiro/aframe-teleport-controls/dist/aframe-teleport-controls.min.js"></script>
 
+        
+
     </head>
     <body>
         <a-scene physics="gravity: -9.8">
@@ -18,10 +20,10 @@
               <img id="hedge" src="assets/textures/green-grass-mat-background.jpg">
               <audio id="background-noises" src="assets/sounds/Stonehenge narration.mp3"></audio>
               <a-asset-item id="stonehenge" src="assets/GLTF/stonehenge_decimated.glb"></a-asset-item>
+              <a-asset-item id="avatar" src="assets/GLTF/avatar.glb"></a-asset-item>
             </a-assets>
-            
-            <!-- Placing the starting camera with a physical body -->
-            <a-entity id="rig" position="-5 0 8" rotation="0 70 0" avatar-follower>
+            <!-- Rig per la fotocamera, i controller e l'avatar -->
+            <a-entity id="rig" position="-5 1.6 8" avatar-follower>
                 <a-camera camera="active: true" camera look-controls wasd-controls>
                     <a-text id="welcome-text"
                             value= "Welcome to Stonehenge" 
@@ -48,7 +50,12 @@
                     <a-sound id="background-sound" src="#background-noises" autoplay="true" loop="true" volume="0.1"></a-sound>
     
                 </a-camera>
-
+                <!-- User avatar -->
+                <a-entity 
+                    gltf-model="#avatar"
+                    position="0 -1.6 0"
+                    scale="1 1 1">
+                </a-entity>
                 <!-- Left controller with teleport -->
                 <a-entity 
                     hand-controls="hand: left" 
@@ -62,7 +69,9 @@
                 
                 <!-- Add physics to the body -->
                 <a-entity movement-controls kinematic-body></a-entity>
+
             </a-entity>
+            
 
             <!-- Using the asset management system -->
             <a-sky src="#panorama" position="0 -50 0"></a-sky>
