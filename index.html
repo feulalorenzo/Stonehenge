@@ -3,14 +3,12 @@
     <head>
         <title>Stonehenge Scene</title>
         <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
-        <!-- Adds physics to the project -->
-        <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
         <!-- Inclusione del componente teleport-controls per Meta Quest -->
         <script src="https://cdn.jsdelivr.net/gh/oscarmarinmiro/aframe-teleport-controls/dist/aframe-teleport-controls.min.js"></script>
-
+        <script src="scripts/fade_text.js"></script>
     </head>
     <body>
-        <a-scene physics="gravity: -9.8">
+        <a-scene>
             <a-assets>
               <img id="panorama" src="assets/background/panorama.jpg">
               <img id="ground" src="assets/textures/ground.jpg">
@@ -21,7 +19,7 @@
             </a-assets>
             
             <!-- Placing the starting camera with a physical body -->
-            <a-entity id="rig" position="-5 0 8" rotation="0 70 0" avatar-follower>
+            <a-entity id="rig" position="-5 0 8" rotation="0 70 0">
                 <a-camera camera="active: true" camera look-controls wasd-controls>
                     <a-text id="welcome-text"
                             value= "Welcome to Stonehenge" 
@@ -60,8 +58,6 @@
                     teleport-controls="button: trigger; collisionEntities: #floor">
                 </a-entity>
                 
-                <!-- Add physics to the body -->
-                <a-entity movement-controls kinematic-body></a-entity>
             </a-entity>
 
             <!-- Using the asset management system -->
@@ -124,8 +120,7 @@
             <!-- Stonhenge model -->
             <a-entity gltf-model="#stonehenge" position="0 -1 0"></a-entity>
 
-        </a-scene>       
-        <script src="scripts/fade_text.js"></script>
+        </a-scene>
     </body>
 </html>
 
