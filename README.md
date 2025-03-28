@@ -26,8 +26,7 @@ This project was created as a **learning exercise** in developing **VR applicati
 
 ## 📌 Future Improvements
 - Adding **interactivity** (e.g., movement, object inspection).
-- Enhancing **textures and lighting** for better realism.
-- Implementing **audio configuration** for an immersive experience.
+- Adding **avatar** for better realism.
 
 ---
 Enjoy exploring **Stonehenge** in VR! 🏛️✨
